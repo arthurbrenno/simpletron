@@ -2,6 +2,9 @@ package com.brc.simpletron;
 
 import java.util.Scanner;
 
+/**
+ * This class represents a simple machine that implements the {@link Machine} interface.
+ */
 public class SimpletronMachine implements Machine{
 
     private static final Scanner sc = new Scanner(System.in);
@@ -12,6 +15,11 @@ public class SimpletronMachine implements Machine{
     private int operation; //what is going to be done. // READ, LOAD, STORE, ADD
     private int operand; // the memory location. // 00, 05, 06, 22
 
+    /**
+     * Turns on the machine by displaying a welcome message,
+     * getting instructions from the user, executing the instructions,
+     * and dumping the state of the machine.
+     */
     public void on() {
         welcome();
         getInstructions();
@@ -19,6 +27,11 @@ public class SimpletronMachine implements Machine{
         dump();
     }
     
+    /**
+     * Prompts the user to enter instructions one by one until
+     * the user enters -99999 or the memory is full.
+     * The instructions are validated and written to the memory.
+     */
     private void getInstructions() {
         int instruction = 0;
         String temp;
@@ -34,6 +47,9 @@ public class SimpletronMachine implements Machine{
         }    
     }
 
+    /**
+     * Executes the instructions stored in the memory.
+     */
     private void execute() {
 
         boolean executing = true;
@@ -116,6 +132,13 @@ public class SimpletronMachine implements Machine{
         }
     }
 
+
+     /**
+     * Returns the number of digits in the specified integer.
+     * @param instruction the integer whose number of digits to return
+     * @return the number of digits in the specified integer
+     */
+
     private int getLength(int instruction) {
         int length = 0;
         while (instruction != 0) {
@@ -125,18 +148,27 @@ public class SimpletronMachine implements Machine{
         return length;
     }
 
+     /**
+     * aborts the program
+     */
+
     private void abort() {
         System.out.println("*** Attempt to divide by zero *** ");
         System.out.println("*** Simpletron execution abnormally terminated ***");
         System.exit(-1);
     }
 
+     /**
+     * turn the machine off
+     */
     public void off() {
         System.out.println("\n\n*** Program execution ended *** ");
         System.out.println("*** Made by Arthur Brenno *** ");
         memory.free();
     }
-
+     /**
+     * displays welcome message
+     */
     private void welcome() {
         clear();
         System.out.println("*** Welcome to Simpletron! ***");
@@ -147,12 +179,18 @@ public class SimpletronMachine implements Machine{
         System.out.println("*** Type -99999 to stop entering your program. ***\n");
     }
 
+     /**
+     * prepare the program for executing
+     */
     private void preExec() {
         clear();
         System.out.println("*** Program loading completed ***");
         System.out.println("*** Program execution begins ***");
     }
 
+    /**
+     * clears tge console on windows
+     */
     private void clear() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -161,6 +199,11 @@ public class SimpletronMachine implements Machine{
         }
     }
 
+     /**
+     * This method clears the screen and prints the values of the registers and memory.
+     * The registers printed are: accumulator, instructionCounter, instructionRegister,
+     * operationCode and operand. The memory is printed in a table format with 10 columns.
+     */
     private void dump() {
         clear();
         System.out.println("REGISTERS");
