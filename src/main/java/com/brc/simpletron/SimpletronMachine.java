@@ -16,6 +16,7 @@ public class SimpletronMachine implements Machine{
         welcome();
         getInstructions();
         execute();
+        dump();
     }
     
     private void getInstructions() {
@@ -133,7 +134,7 @@ public class SimpletronMachine implements Machine{
     }
 
     public void off() {
-        System.out.println("*** Program execution ended *** ");
+        System.out.println("\n*** Program execution ended *** ");
         System.out.println("*** Made by Arthur Brenno *** ");
         memory.free();
     }
@@ -163,9 +164,26 @@ public class SimpletronMachine implements Machine{
     }
 
     private void dump() {
+        clear();
         System.out.println("REGISTERS");
-        System.out.printf("accumulator +%-04d", eax.get());
-        System.out.printf("accumulator +%-04d");
-    }
+        System.out.printf("accumulator             +%04d%n", eax.get());
+        System.out.printf("instructionCounter      %02d%n", instructionCounter);
+        System.out.printf("instructionRegister     +%04d%n", instructionRegister);
+        System.out.printf("instructionCounter      %02d%n", operation);
+        System.out.printf("instructionCounter      %02d%n", operand);
+        System.out.println();
+        System.out.println("Memory:");
+        for (int i = 0; i < memory.capacity() / 10; i++) {
+            System.out.printf("       %4d", i);
+        }
+        System.out.println();
+        for (int i = 0; i < memory.capacity(); i++) {
+            if (i % 10 == 0 && i != 0) {
+                System.out.println();
+            }
+            System.out.printf("%s      +%04d", (i % 10 == 0 || i == 0) ? i : "", memory.get(i));
+
+        }
+    }   
 
 }
