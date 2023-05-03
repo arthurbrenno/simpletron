@@ -8,6 +8,10 @@ public class Accumulator {
         eax = value;
     }
 
+    public int get() {
+        return eax;
+    }
+
     public void performOperation(int operationCode, int value) {
         switch (operationCode) {
             case Operation.ADD: eax += value; break;

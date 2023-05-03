@@ -15,6 +15,10 @@ public class Memory {
         return mem[pos];
     }
 
+    public void set(int element, int pos) {
+        mem[pos] = element;
+    }
+
     public void free() {
         for (int i = 0; i < mem.length; i++) {
             mem[i] = 0;
