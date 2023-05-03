@@ -134,7 +134,7 @@ public class SimpletronMachine implements Machine{
     }
 
     public void off() {
-        System.out.println("\n*** Program execution ended *** ");
+        System.out.println("\n\n*** Program execution ended *** ");
         System.out.println("*** Made by Arthur Brenno *** ");
         memory.free();
     }
