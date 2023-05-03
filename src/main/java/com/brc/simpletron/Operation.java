@@ -18,5 +18,4 @@ public final class Operation {
     protected static final int BRANCHZERO = 42;
     protected static final int HALT = 43;
     
-    public static int currentOp = READ;
 }

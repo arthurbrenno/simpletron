@@ -28,14 +28,12 @@ public class SimpletronMachine implements Machine{
             try {
                 instruction = Integer.parseInt(temp);
             } catch (NumberFormatException e) { continue; }
-            if (getLength(instruction) == 4) {
+            if (getLength(instruction) == 4 || instruction == -99999) {
                 memory.write(instruction);
             }
         }    
     }
 
-    
-    
     private void execute() {
 
         boolean executing = true;
@@ -111,13 +109,13 @@ public class SimpletronMachine implements Machine{
                     instructionCounter++;
                     break;
                     
-                case -99:
+                case -999:
                 case Operation.HALT: executing = false; break;
+                default: instructionCounter++;
             }
         }
     }
 
-    
     private int getLength(int instruction) {
         int length = 0;
         while (instruction != 0) {
@@ -166,11 +164,11 @@ public class SimpletronMachine implements Machine{
     private void dump() {
         clear();
         System.out.println("REGISTERS");
-        System.out.printf("accumulator             +%04d%n", eax.get());
+        System.out.printf("accumulator             %+05d%n", eax.get());
         System.out.printf("instructionCounter      %02d%n", instructionCounter);
-        System.out.printf("instructionRegister     +%04d%n", instructionRegister);
-        System.out.printf("instructionCounter      %02d%n", operation);
-        System.out.printf("instructionCounter      %02d%n", operand);
+        System.out.printf("instructionRegister     %+04d%n", instructionRegister);
+        System.out.printf("operationCode           %02d%n", operation);
+        System.out.printf("operand                 %02d%n", operand);
         System.out.println();
         System.out.println("Memory:");
         for (int i = 0; i < memory.capacity() / 10; i++) {
@@ -181,7 +179,7 @@ public class SimpletronMachine implements Machine{
             if (i % 10 == 0 && i != 0) {
                 System.out.println();
             }
-            System.out.printf("%s      +%04d", (i % 10 == 0 || i == 0) ? i : "", memory.get(i));
+            System.out.printf("%s      %+05d", (i % 10 == 0 || i == 0) ? i : "", memory.get(i));
 
         }
     }   
