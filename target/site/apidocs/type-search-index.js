@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"com.brc.simpletron","l":"Accumulator"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.brc.simpletron","l":"Machine"},{"p":"com.brc.simpletron","l":"Main"},{"p":"com.brc.simpletron","l":"Memory"},{"p":"com.brc.simpletron","l":"Operation"},{"p":"com.brc.simpletron","l":"SimpletronMachine"}];updateSearchResults();
