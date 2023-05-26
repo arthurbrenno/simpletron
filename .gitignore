@@ -1,12 +1,12 @@
 # Compiled class file
 *.class
 target/* linguist-vendored
-* linguist-vendored
+*linguist-vendored
 *.java linguist-vendored=false
+*.html
 
 # Log file
 *.log
-
 # BlueJ files
 *.ctxt
 
