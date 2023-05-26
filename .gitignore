@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 target/* linguist-vendored
+* linguist-vendored
+*.java linguist-vendored=false
 
 # Log file
 *.log
