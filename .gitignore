@@ -4,6 +4,7 @@ target/* linguist-vendored
 *linguist-vendored
 *.java linguist-vendored=false
 *.html
+*.html linguist-vendored
 
 # Log file
 *.log
